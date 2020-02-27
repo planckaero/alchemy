@@ -28,9 +28,9 @@ ifneq ("$(strip $(_external_add_CXXFLAGS))","")
 endif
 
 ifneq ("$(strip $(_external_add_LDFLAGS))","")
-  LOCAL_CMAKE_CONFIGURE_ARGS += -DALCHEMY_EXTRA_EXE_LINKER_FLAGS="$(_external_add_LDFLAGS)"
-  LOCAL_CMAKE_CONFIGURE_ARGS += -DALCHEMY_EXTRA_SHARED_LINKER_FLAGS="$(_external_add_LDFLAGS)"
-  LOCAL_CMAKE_CONFIGURE_ARGS += -DALCHEMY_EXTRA_MODULE_LINKER_FLAGS="$(_external_add_LDFLAGS)"
+  LOCAL_CMAKE_CONFIGURE_ARGS += -DALCHEMY_EXTRA_EXE_LINKER_FLAGS="-Wl,--start-group $(_external_add_LDFLAGS)"
+  LOCAL_CMAKE_CONFIGURE_ARGS += -DALCHEMY_EXTRA_SHARED_LINKER_FLAGS="-Wl,--start-group $(_external_add_LDFLAGS)"
+  LOCAL_CMAKE_CONFIGURE_ARGS += -DALCHEMY_EXTRA_MODULE_LINKER_FLAGS="-Wl,--start-group $(_external_add_LDFLAGS)"
 endif
 
 ###############################################################################
